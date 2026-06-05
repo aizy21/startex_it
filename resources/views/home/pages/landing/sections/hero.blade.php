@@ -10,7 +10,7 @@
             <div class="col-lg-6 mb-3 mb-lg-0">
 
                 <!-- Dynamic Text Slider Wrapper -->
-                <div class="hero-text-slider-container text-lg-start text-center">
+                <div class="hero-text-slider-container text-lg-start text-center reveal">
 
                     <!-- Slide 1 Text -->
                     <div class="hero-text-slide active" data-slide="0">
@@ -60,7 +60,7 @@
 
                 <!-- Static Action Buttons (Remain perfectly stationary) -->
                 <div class="d-flex flex-wrap gap-3 mt-2">
-                    <a class="btn btn-theme px-4 mx-auto me-lg-1" href="#solutions" style="background-color: var(--accent-color, #13ce85); border: none; font-weight: 600; color: #0a192f;">
+                    <a class="btn btn-theme px-4 mx-auto me-lg-1 reveal" href="#solutions" style="background-color: var(--accent-color, #13ce85); border: none; font-weight: 600; color: #0a192f;">
                         Explore Our Tech
                         <i class="fa-solid fa-arrow-down ms-2 transition-arrow"></i>
                     </a>
@@ -72,7 +72,7 @@
 
             <!-- Right Column: Image Slider with Navigation Arrows -->
             <div class="col-lg-6">
-                <div class="hero-image-slider-wrapper position-relative">
+                <div class="hero-image-slider-wrapper position-relative  reveal">
 
                     <div class="hero-image-slides">
                         <!-- Image Slide 1 -->
@@ -117,7 +117,7 @@
         <div class="row g-4 justify-content-center">
 
             <!-- What We Do Card 1 -->
-            <div class="col-md-4">
+            <div class="col-md-4 reveal">
                 <div class="card h-100 p-4 rounded-4 action-card border bg-white shadow-sm">
                     {{-- <div class="icon-indicator mb-3 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
                         <i class="fa-solid fa-tags text-accent fs-4" style="color: #13ce85;"></i>
@@ -128,7 +128,7 @@
             </div>
 
             <!-- What We Do Card 2 -->
-            <div class="col-md-4">
+            <div class="col-md-4 reveal"  style="transition-delay: 0.2s;">
                 <div class="card h-100 p-4 rounded-4 action-card border bg-white shadow-sm">
                     {{-- <div class="icon-indicator mb-3 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
                         <i class="fa-solid fa-screwdriver-wrench text-accent fs-4" style="color: #13ce85;"></i>
@@ -139,8 +139,8 @@
             </div>
 
             <!-- What We Do Card 3 -->
-            <div class="col-md-4">
-                <div class="card h-100 p-4 rounded-4 action-card border bg-white shadow-sm">
+            <div class="col-md-4 reveal" style="transition-delay: 0.3s;">
+                <div class="card h-100 p-4 rounded-4 action-card border bg-white shadow-sm ">
                     {{-- <div class="icon-indicator mb-3 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
                         <i class="fa-solid fa-network-wired text-accent fs-4" style="color: #13ce85;"></i>
                     </div> --}}

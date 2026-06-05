@@ -16,8 +16,8 @@
         <div class="row g-4 justify-content-center mb-5">
 
             <!-- Service 1 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
+            <div class="col-lg-3 col-md-6 reveal" style="transition-delay: 0.2s;">
+                <div class="card  service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
                     <div>
                         <div class="service-icon-box mb-4 d-flex align-items-center justify-content-center rounded-3">
                             <i class="fa-solid fa-laptop-code fs-4"></i>
@@ -30,8 +30,8 @@
             </div>
 
             <!-- Service 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
+            <div class="col-lg-3 col-md-6 reveal" style="transition-delay: 0.3s;">
+                <div class="card  service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between" >
                     <div>
                         <div class="service-icon-box mb-4 d-flex align-items-center justify-content-center rounded-3">
                             <i class="fa-solid fa-gears fs-4"></i>
@@ -44,8 +44,8 @@
             </div>
 
             <!-- Service 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
+            <div class="col-lg-3 reveal col-md-6" style="transition-delay: 0.4s;">
+                <div class="card  service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
                     <div>
                         <div class="service-icon-box mb-4 d-flex align-items-center justify-content-center rounded-3">
                             <i class="fa-solid fa-circle-nodes fs-4"></i>
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Service 4 -->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 reveal col-md-6" style="transition-delay: 0.5s;">
                 <div class="card service-highlight-card h-100 p-4 border-0 shadow-sm bg-white rounded-4 position-relative overflow-hidden d-flex flex-column justify-content-between">
                     <div>
                         <div class="service-icon-box mb-4 d-flex align-items-center justify-content-center rounded-3">
@@ -74,8 +74,8 @@
         </div>
 
         <!-- Learn More Link -->
-        <div class="text-center mt-5">
-            <a href="{{route('home.services.index')}}" class="btn btn-learn-more px-4 py-3 rounded-pill fw-bold text-decoration-none">
+        <div class="text-center mt-5 reveal"  style="transition-delay: 0.2s;">
+            <a href="{{route('home.services.index')}}" class="btn btn-learn-more px-4 py-3 rounded-pill fw-bold text-decoration-none ">
                 Explore Detailed Services <i class="fa-solid fa-arrow-right ms-2 transition-arrow"></i>
             </a>
         </div>
