@@ -60,7 +60,10 @@
 
                 <!-- Static Action Buttons (Remain perfectly stationary) -->
                 <div class="d-flex flex-wrap gap-3 mt-2">
-                    <a class="btn btn-theme px-4 mx-auto me-lg-1" href="#solutions" style="background-color: var(--accent-color, #13ce85); border: none; font-weight: 600; color: #0a192f;">Explore Our Tech</a>
+                    <a class="btn btn-theme px-4 mx-auto me-lg-1" href="#solutions" style="background-color: var(--accent-color, #13ce85); border: none; font-weight: 600; color: #0a192f;">
+                        Explore Our Tech
+                        <i class="fa-solid fa-arrow-down ms-2 transition-arrow"></i>
+                    </a>
                     {{-- <a class="btn btn-outline-light btn-lg rounded-pill fw-bold px-4 hover-slide" href="#about">
                         <i class="fa-solid fa-play me-2"></i> How We Work
                     </a> --}}

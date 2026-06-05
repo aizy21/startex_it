@@ -31,13 +31,14 @@
                             <h2 class="fw-bold" style="color: var(--navy-blue, #0a192f);">Ready to Transform Your Business?</h2>
                             <p class="text-muted">Contact us for a personalized demo or custom pricing.</p>
                         </div>
-                        <form class="needs-validation" action="#" novalidate>
+                        <form class="needs-validation" action="{{route('home.contact.submit')}}" method="POST">
+                            @csrf
                             <div class="row g-3">
 
                                 <!-- Full Name -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" id="fullName" type="text" placeholder="Full Name" required>
+                                        <input class="form-control" id="fullName" type="text" name="name" placeholder="Full Name" required>
                                         <label for="fullName">Full Name <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -45,7 +46,7 @@
                                 <!-- Work Email -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" id="workEmail" type="email" placeholder="Work Email" required>
+                                        <input class="form-control" id="workEmail" type="email" name="email"  placeholder="Work Email" required>
                                         <label for="workEmail">Work Email <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -53,7 +54,7 @@
                                 <!-- Contact Number -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" id="contactNo" type="tel" placeholder="Contact Number" required>
+                                        <input class="form-control" id="contactNo" type="tel" name="phone" minlength="11" placeholder="Contact Number" required>
                                         <label for="contactNo">Contact Number <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -61,7 +62,7 @@
                                 <!-- Company Name -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" id="companyName" type="text" placeholder="Company Name" required>
+                                        <input class="form-control" id="companyName" name="company" type="text" placeholder="Company Name" required>
                                         <label for="companyName">Company Name <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -69,15 +70,7 @@
                                 <!-- Country -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="countrySelect" required>
-                                            <option value="" disabled selected hidden>Select Country</option>
-                                            <option value="US">United States</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="GB">United Kingdom</option>
-                                            <option value="AU">Australia</option>
-                                            <option value="IN">India</option>
-                                            <option value="Other">Other</option>
-                                        </select>
+                                        <input class="form-control" id="countryName" name="country" type="text" placeholder="Country Name" required>
                                         <label for="countrySelect">Country <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
@@ -85,12 +78,13 @@
                                 <!-- Interested Product (Optional) -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="interestedProduct">
-                                            <option value="" disabled selected hidden>Select Product (Optional)</option>
+                                        <select class="form-select" name="product" id="interestedProduct">
+                                            <option value="" >-- Select Product --</option>
                                             <option value="syncrowise">Syncrowise</option>
                                             <option value="trakset">Trakset</option>
                                             <option value="inventory">Inventory System</option>
                                             <option value="feedback">Feedback Management</option>
+                                            <option value="other">Other</option>
                                         </select>
                                         <label for="interestedProduct">Interested Product</label>
                                     </div>
@@ -98,9 +92,9 @@
 
                                 <!-- Message -->
                                 <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" id="message" style="height: 120px" placeholder="How can we help you?" required></textarea>
-                                        <label for="message">How can we help you? <span class="text-danger">*</span></label>
+                                    <div class="form-group">
+                                        {{-- <label for="message">How can we help you? <span class="text-danger">*</span></label> --}}
+                                        <textarea class="form-control" id="message" placeholder="How can we help you?" name="message" rows="5" cols="15" placeholder="How can we help you?" required></textarea>
                                     </div>
                                 </div>
 
@@ -183,8 +177,8 @@
         /* Form Floating Labels Override for validation state styling */
         .form-floating>.form-control:focus,
         .form-floating>.form-select:focus {
-            border-color: var(--navy-blue, #0a192f);
-            box-shadow: 0 0 0 0.25rem rgba(10, 25, 47, 0.15);
+            border-color:  var(--green);
+            box-shadow: 0 0 0 0.25rem rgba(19, 206, 133, 0.25);
         }
 
         /* Adjustments for the text-danger asterisk alignment inside floating label */
@@ -218,4 +212,113 @@
             color: #ffffff;
         }
     </style>
+@endpush
+@push('scripts')
+<!-- Ensure jQuery is loaded in your layout template before this script executes -->
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+<script>
+    $(document).ready(function () {
+        const $form = $('.needs-validation');
+        const $submitBtn = $form.find('button[type="submit"]');
+        const originalBtnText = $submitBtn.html();
+
+        $form.on('submit', function (e) {
+            const form = this;
+
+            // 1. Trigger native Bootstrap 5 client-side validation first
+            if (!form.checkValidity()) {
+                e.preventDefault();
+                e.stopPropagation();
+                $form.addClass('was-validated');
+                return;
+            }
+
+            // Prevent default page redirection
+            e.preventDefault();
+
+            // Clear any previous server-side validation errors
+            $('.invalid-feedback').remove();
+            $('.form-control, .form-select').removeClass('is-invalid');
+
+            // 2. Add loading spinner to the submit button
+            $submitBtn.prop('disabled', true).html(
+                `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending...`
+            );
+
+            // Prepare payload
+            const formData = $form.serialize();
+
+            // 3. Post data via AJAX
+            $.ajax({
+                url: $form.attr('action'),
+                method: 'POST',
+                data: formData,
+                headers: {
+                    'Accept': 'application/json' // Instructs Laravel to return JSON validation errors if they occur
+                },
+                success: function (response) {
+                    // Restore button state
+                    $submitBtn.prop('disabled', false).html(originalBtnText);
+
+                    // 4. Smoothly transition to theme-styled success screen
+                    $form.fadeOut(400, function () {
+                        const successHtml = `
+                            <div class="text-center py-5 success-container" style="display:none;">
+                                <div class="mb-4 d-inline-flex align-items-center justify-content-center rounded-circle"
+                                     style="width: 80px; height: 80px; background-color: rgba(19, 206, 133, 0.1); color: #13ce85;">
+                                    <i class="fa-solid fa-circle-check fa-3x"></i>
+                                </div>
+                                <h3 class="fw-bold" style="color: var(--navy-blue, #0a192f);">Message Sent!</h3>
+                                <p class="text-muted mx-auto" style="max-width: 400px; font-size: 0.95rem;">
+                                    Your message has been sent successfully. Our team will review your inquiry and get back to you shortly.
+                                </p>
+                            </div>
+                        `;
+                        $form.after(successHtml);
+                        $('.success-container').fadeIn(400);
+                    });
+                },
+                error: function (xhr) {
+                    // Restore button state
+                    $submitBtn.prop('disabled', false).html(originalBtnText);
+
+                    // 5. Handle Server-Side Validation Errors (HTTP Status 422)
+                    if (xhr.status === 422) {
+                        const response = xhr.responseJSON;
+                        if (response && response.errors) {
+                            $.each(response.errors, function (field, messages) {
+                                // Locate inputs using name attributes matching Laravel keys
+                                const $input = $('[name="' + field + '"]');
+                                $input.addClass('is-invalid');
+
+                                // Append styled error messages relative to floating labels or fields
+                                const errorMessage = `<div class="invalid-feedback d-block mt-1">${messages[0]}</div>`;
+
+                                if ($input.parent().hasClass('form-floating')) {
+                                    $input.parent().after(errorMessage);
+                                } else {
+                                    $input.after(errorMessage);
+                                }
+                            });
+                        }
+                    } else {
+                        // Fallback error alert for unexpected server anomalies
+                        alert('An unexpected error occurred. Please try again later.');
+                    }
+                }
+            });
+        });
+
+        // 6. Interactive Cleanup: Clear invalid styling as the user modifies the fields
+        $form.on('input change', '.form-control, .form-select', function () {
+            const $this = $(this);
+            $this.removeClass('is-invalid');
+
+            // Remove associated sibling error messages
+            $this.siblings('.invalid-feedback').remove();
+            $this.parent().siblings('.invalid-feedback').remove();
+        });
+    });
+</script>
 @endpush

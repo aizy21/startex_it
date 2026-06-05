@@ -15,4 +15,6 @@ Route::controller(HomeController::class)->name('home.')->group(function(){
     Route::get('/services-we-provide', 'service_view')->name('services.index');
     Route::get('/privacy-policy', 'policy_view')->name('policy.index');
     Route::get('/terms-and-conditions', 'terms_view')->name('terms.index');
+    Route::post('/contact', 'contact')->name("contact.submit");
+
 });

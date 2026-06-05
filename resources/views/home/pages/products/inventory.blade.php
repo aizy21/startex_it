@@ -9,12 +9,12 @@
         <div class="container position-relative z-2">
             <div class="row justify-content-center reveal">
                 <div class="col-lg-8">
-                    <div class="badge mb-3 rounded-pill px-3 py-2 fw-bold" style="background-color: rgba(19, 206, 133, 0.1); color: #13ce85 !important;">FEEDBACK MANAGEMENT</div>
+                    <div class="badge mb-3 rounded-pill px-3 py-2 fw-bold" style="background-color: rgba(19, 206, 133, 0.1); color: #13ce85 !important;">INVENTORY SYSTEM</div>
                     <h1 class="display-4 fw-bolder mb-4 text-white">
-                        Transform Feedback Into <br>
-                        <span class="text-accent" style="color: #13ce85;">Actionable Insights</span>
+                        AI-Powered <br>
+                        <span class="text-accent" style="color: #13ce85;">Inventory Management</span>
                     </h1>
-                    <p class="lead mb-5 opacity-75 text-white-50 fs-6">Gather customer reviews, track Net Promoter Scores (NPS) in real-time, and make data-driven decisions through unified analytical dashboards.</p>
+                    <p class="lead mb-5 opacity-75 text-white-50 fs-6">Track stock levels automatically, eliminate manual reconciliation errors, and forecast demand seamlessly with our intelligent, multi-location database system.</p>
                     <a href="/#contact" class="btn btn-theme-light btn-lg px-5 py-3 rounded-pill fw-bold text-dark border-0" style="background-color: #13ce85; color: #0a192f !important;">Request a Demo</a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="row justify-content-center mt-5 reveal" style="transition-delay: 0.2s;">
                 <div class="col-lg-10">
                     <div class="mockup-wrapper bg-white p-2 rounded-4 shadow-lg">
-                        <img src="{{asset('assets/media/logos/feedback/dashboard.png')}}" alt="Customer Feedback Analytics Dashboard" class="img-fluid mockup-img w-100 rounded-3">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80" alt="AI Powered Inventory Analytics Dashboard" class="img-fluid mockup-img w-100 rounded-3">
                     </div>
                 </div>
             </div>
@@ -40,41 +40,41 @@
             <div class="text-center mb-5 reveal">
                 <span class="text-uppercase tracking-wider fw-bold fs-7" style="color: #13ce85;">Platform Features</span>
                 <h2 class="fw-bold mt-2" style="color: var(--navy-blue, #0a192f);">Core System Capabilities</h2>
-                <p class="text-muted max-w-600 mx-auto">Standard tools built to capture, measure, and analyze customer satisfaction metrics automatically.</p>
+                <p class="text-muted max-w-600 mx-auto">Advanced, scalable inventory tools built to keep stock levels balanced, automate supplier orders, and reduce operational waste.</p>
             </div>
 
             <div class="row g-4">
 
-                <!-- Feature 1: NPS & CSAT Tracking -->
+                <!-- Feature 1: Real-time stock tracking -->
                 <div class="col-md-4 reveal">
                     <div class="card feature-box h-100 p-4 border rounded-4 bg-white shadow-sm">
                         <div class="icon-indicator mb-4 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
-                            <i class="fa-solid fa-square-poll-vertical fs-3" style="color: #13ce85;"></i>
+                            <i class="fa-solid fa-boxes-stacked fs-3" style="color: #13ce85;"></i>
                         </div>
-                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">NPS & CSAT Tracking</h4>
-                        <p class="text-muted small lh-lg mb-0">Deploy clean digital surveys via web, email, or localized QR codes to monitor Net Promoter Scores and customer satisfaction indexes automatically.</p>
+                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">Automated Stock Tracking</h4>
+                        <p class="text-muted small lh-lg mb-0">Monitor inventory levels across multiple warehouses in real-time. Automatically reconcile physical inventory changes using integrated barcode scanning.</p>
                     </div>
                 </div>
 
-                <!-- Feature 2: Interactive Dashboards -->
+                <!-- Feature 2: Predictive Demand Forecasting -->
                 <div class="col-md-4 reveal" style="transition-delay: 0.1s;">
                     <div class="card feature-box h-100 p-4 border rounded-4 bg-white shadow-sm">
                         <div class="icon-indicator mb-4 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
-                            <i class="fa-solid fa-chart-line fs-3" style="color: #13ce85;"></i>
+                            <i class="fa-solid fa-brain fs-3" style="color: #13ce85;"></i>
                         </div>
-                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">Real-Time Dashboards</h4>
-                        <p class="text-muted small lh-lg mb-0">Centralize multi-channel reviews into graphical dashboards. Identify satisfaction trend lines, response counts, and active alert triggers instantly.</p>
+                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">Predictive Forecasting</h4>
+                        <p class="text-muted small lh-lg mb-0">Our embedded algorithms analyze historical sales velocities and seasonal trend lines to suggest optimal reorder points before shortages occur.</p>
                     </div>
                 </div>
 
-                <!-- Feature 3: Analytics & Reporting -->
+                <!-- Feature 3: Supplier Integration -->
                 <div class="col-md-4 reveal" style="transition-delay: 0.2s;">
                     <div class="card feature-box h-100 p-4 border rounded-4 bg-white shadow-sm">
                         <div class="icon-indicator mb-4 d-flex align-items-center justify-content-center rounded-3 bg-light" style="width: 50px; height: 50px;">
-                            <i class="fa-solid fa-file-invoice-with-usd fs-3" style="color: #13ce85;"></i>
+                            <i class="fa-solid fa-truck-ramp-box fs-3" style="color: #13ce85;"></i>
                         </div>
-                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">Analytical Reports</h4>
-                        <p class="text-muted small lh-lg mb-0">Compile weekly summaries and export filtered CSV/PDF datasets. Track performance historical records without compiling manual spreadsheets.</p>
+                        <h4 class="fw-bold mb-3" style="color: var(--navy-blue, #0a192f);">Supplier Integration</h4>
+                        <p class="text-muted small lh-lg mb-0">Automate purchase order generation. Instantly notify vendor networks when stock drops below threshold levels, simplifying procurement queues.</p>
                     </div>
                 </div>
 

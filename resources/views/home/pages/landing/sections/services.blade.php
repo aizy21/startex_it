@@ -5,7 +5,9 @@
     <div class="container position-relative z-1 py-4">
         <!-- Section Header -->
         <div class="text-center mb-5 max-w-700 mx-auto">
-            <span class="text-uppercase tracking-wider fw-bold fs-7" style="color: var(--accent-color, #13ce85);">What We Do</span>
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill bg-accent-soft text-accent fw-bold small mb-3 shadow-sm">
+                <i class="fa-solid fa-cubes"></i> What We Do
+            </div>
             <h2 class="fw-bold mt-2" style="color: var(--navy-blue, #0a192f);">Comprehensive Web & Software Solutions</h2>
             <p class="text-muted">We build robust, scalable digital assets to help your business adapt, automate, and expand within the modern digital landscape.</p>
         </div>

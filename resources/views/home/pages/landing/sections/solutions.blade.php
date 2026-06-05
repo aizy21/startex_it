@@ -107,7 +107,8 @@
                         <li>Pharmacies</li>
                     </ul>
 
-                    <a class="btn-link-custom mt-auto" href="product.html">
+                    <a class="btn-link-custom mt-auto" href="{{ route('home.product.index', 'inventory') }}">
+                    {{-- <a class="btn-link-custom mt-auto" href="product.html"> --}}
                         <span>Learn More</span>
                         <div class="arrow-box"><i class="fa-solid fa-arrow-right"></i></div>
                     </a>
@@ -141,7 +142,8 @@
                         <li>Pharmacies</li>
                     </ul>
 
-                    <a class="btn-link-custom mt-auto" href="product.html">
+                    <a class="btn-link-custom mt-auto" href="{{ route('home.product.index', 'feedback') }}">
+                    {{-- <a class="btn-link-custom mt-auto" href="product.html"> --}}
                         <span>Learn More</span>
                         <div class="arrow-box"><i class="fa-solid fa-arrow-right"></i></div>
                     </a>
