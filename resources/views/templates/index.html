@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startex IT | Enterprise Software Solutions</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES & DESIGN SYSTEM
+        ========================================= */
+        :root {
+            --navy-blue: #001b3d;
+            --green: #13ce85;
+            --red-range: #de7c6f;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-font {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+        .navbar {
+            transition: all 0.4s ease;
+            padding: 20px 0;
+            background-color: transparent;
+        }
+        .navbar.scrolled {
+            background-color: var(--navy-blue);
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: 0; left: 0;
+            background-color: var(--green);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        .btn-theme {
+            background-color: var(--green);
+            color: var(--navy-blue) !important;
+            border-radius: 50px;
+            font-weight: 700;
+            padding: 10px 25px;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-theme:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(19, 206, 133, 0.3);
+            background-color: #10b876;
+        }
+
+        
+      /* =========================================
+           ANIMATIONS (jQuery handles adding .active)
+        ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           ABOUT & SOLUTIONS CARDS
+        ========================================= */
+        section { padding: 100px 0; }
+        
+        .solution-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 40px 30px;
+            height: 100%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,27,61,0.08);
+            border-color: rgba(19, 206, 133, 0.3);
+        }
+        .icon-wrapper {
+            width: 60px; height: 60px;
+            background: rgba(0, 27, 61, 0.05);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            color: var(--navy-blue);
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        .solution-card:hover .icon-wrapper {
+            background: var(--green);
+            color: var(--navy-blue);
+            transform: scale(1.1) rotate(5deg);
+        }
+        .btn-link-custom {
+            color: var(--red-range);
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: auto;
+            display: inline-flex; align-items: center; gap: 8px;
+            transition: 0.3s;
+        }
+        .btn-link-custom:hover {
+            color: var(--navy-blue);
+            gap: 12px;
+        }
+
+        /* =========================================
+           FEATURES & CLIENTS
+        ========================================= */
+        #features { background-color: var(--light-bg); }
+        .feature-pill {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: default;
+        }
+        .feature-pill:hover {
+            background: var(--navy-blue);
+            color: var(--green);
+            transform: translateX(10px);
+        }
+        .client-logo {
+            filter: grayscale(100%) opacity(0.5);
+            transition: 0.3s;
+            max-height: 50px;
+        }
+        .client-logo:hover { filter: grayscale(0%) opacity(1); }
+
+        /* =========================================
+           CONTACT FORM
+        ========================================= */
+        .form-control {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+        .form-control:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 0.25rem rgba(19, 206, 133, 0.25);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
+
+    <!-- NAVBAR -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fs-3" href="#home">
+                <i class="fa-solid fa-layer-group text-accent"></i> Startex <span class="fw-light">IT</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="fa-solid fa-bars text-white fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-theme">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <!-- HERO SECTION -->
+    <header id="home" style="background-color: var(--navy-blue); color: var(--white); padding: 160px 0 100px; position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <!-- Left Content: Company Focus -->
+                <div class="col-lg-6 reveal z-2 mb-5 mb-lg-0">
+                    <div class="hero-badge"><i class="fa-solid fa-code"></i> Enterprise Software Company</div>
+                    <h1 class="display-3 fw-bolder mb-4 lh-sm">
+                        Engineering the <br>
+                        <span class="text-accent">Digital Future</span> <br>
+                        of Your Business.
+                    </h1>
+                    <p class="lead mb-5 opacity-75 pe-lg-5">
+                        Startex IT builds robust, scalable, and secure software solutions tailored for multi-unit brands. We bridge the gap between complex business challenges and intuitive digital platforms.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#about" class="btn btn-theme btn-lg">Who We Are</a>
+                        <a href="#solutions" class="btn btn-outline-light btn-lg rounded-pill fw-bold px-4">Our Software Products</a>
+                    </div>
+                </div>
+
+                <!-- Right Content: Software Engineering Graphic -->
+                <div class="col-lg-6 reveal glow-background" style="transition-delay: 0.2s;">
+                    <div class="hero-dev-window">
+                        <!-- Window Header -->
+                        <div class="dev-header">
+                            <div class="dev-dot red"></div>
+                            <div class="dev-dot yellow"></div>
+                            <div class="dev-dot green"></div>
+                        </div>
+                        <!-- Window Code Body -->
+                        <div class="dev-body">
+                            <span class="code-comment">// Initialize Startex IT Architecture</span><br>
+                            <span class="code-keyword">const</span> <span class="code-function">company</span> = <span class="code-keyword">new</span> <span class="code-function">SoftwareFirm</span>();<br><br>
+                            
+                            <span class="code-keyword">class</span> <span class="code-function">BusinessSolution</span> {<br>
+                            &nbsp;&nbsp;<span class="code-function">constructor</span>() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.scalability = <span class="code-keyword">true</span>;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span>.security = <span class="code-string">"Enterprise-Grade"</span>;<br>
+                            &nbsp;&nbsp;}<br><br>
+                            &nbsp;&nbsp;<span class="code-function">build</span>() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="typewriter-line">"Transforming operations..."</span><br>
+                            &nbsp;&nbsp;}<br>
+                            }<br>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Decorative SVG wave bottom -->
+        <svg style="position:absolute; bottom:0; left: 0; width:100%; height:auto; z-index: 1; display: block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#ffffff" fill-opacity="1" d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
+        </svg>
+        <style>
+            /* =========================================
+            NEW HERO SECTION (COMPANY FOCUSED)
+            ========================================= */
+            .hero-dev-window {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                overflow: hidden;
+                /* Subtle 3D tilt effect */
+                transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+                transition: transform 0.5s ease;
+                width: 100%;
+                max-width: 550px;
+                margin: 0 auto;
+            }
+
+            .hero-dev-window:hover {
+                transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+            }
+
+            .dev-header {
+                background: rgba(0, 0, 0, 0.3);
+                padding: 12px 20px;
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .dev-dot { width: 12px; height: 12px; border-radius: 50%; }
+            .dev-dot.red { background: var(--red-range); }
+            .dev-dot.yellow { background: #f1c40f; }
+            .dev-dot.green { background: var(--green); }
+
+            .dev-body {
+                padding: 30px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 0.95rem;
+                line-height: 1.8;
+                color: #e6e6e6;
+            }
+
+            .code-keyword { color: var(--green); font-weight: bold; }
+            .code-string { color: var(--red-range); }
+            .code-function { color: #61afef; }
+            .code-comment { color: #6c757d; font-style: italic; }
+
+            .typewriter-line {
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                border-right: 2px solid var(--green);
+                animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
+            }
+
+            @keyframes typing {
+                0% { width: 0; }
+                50%, 100% { width: 100%; }
+            }
+            @keyframes blink {
+                from, to { border-color: transparent; }
+                50% { border-color: var(--green); }
+            }
+
+            /* Subtle background glow behind the code window */
+            .glow-background {
+                position: relative;
+            }
+            .glow-background::before {
+                content: '';
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px; height: 300px;
+                background: radial-gradient(circle, rgba(19,206,133,0.15) 0%, transparent 70%);
+                z-index: -1;
+                border-radius: 50%;
+            }  
+        </style>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 reveal">
+                    <img src="https://placehold.co/600x600/001b3d/ffffff?text=Tech+Illustration" alt="About Startex" class="img-fluid rounded-4 shadow-lg">
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 ps-lg-5 reveal" style="transition-delay: 0.2s;">
+                    <h6 class="text-danger-accent fw-bold text-uppercase tracking-wider mb-2">Who We Are</h6>
+                    <h2 class="display-5 fw-bold mb-4" style="color: var(--navy-blue);">Building Software for the Modern Enterprise.</h2>
+                    <p class="text-muted fs-5 mb-4 lh-lg">
+                        At Startex IT, we understand that relying on manual spreadsheets and chat apps leads to communication gaps and zero accountability. We build specialized tools tailored for operational readiness, asset management, and customer relations.
+                    </p>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+                        <li><i class="fa-solid fa-circle-check text-accent fs-5 me-2"></i> Custom-tailored scalable architecture.</li>
+                        <li><i class="fa-solid fa-circle-check text-accent fs-5 me-2"></i> Real-time visibility and centralized dashboards.</li>
+                        <li><i class="fa-solid fa-circle-check text-accent fs-5 me-2"></i> Eliminating operational bottlenecks instantly.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS SECTION -->
+    <section id="solutions" style="background-color: #f4f7f6;">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <h6 class="text-accent fw-bold text-uppercase mb-2">Our Products</h6>
+                <h2 class="display-5 fw-bold" style="color: var(--navy-blue);">Everything in One Platform</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Product 1: Syncrowise -->
+                <div class="col-md-6 col-lg-3 reveal">
+                    <div class="solution-card d-flex flex-column">
+                        <div class="icon-wrapper"><i class="fa-solid fa-rocket"></i></div>
+                        <h4 class="fw-bold mb-3">Syncrowise</h4>
+                        <p class="text-muted small mb-4">Operations Excellence. Digitize daily operational tasks, checklists, and ensure consistency across all outlets.</p>
+                        <a href="product.html" class="btn-link-custom mt-auto">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Product 2: Trakset -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 0.1s;">
+                    <div class="solution-card d-flex flex-column">
+                        <div class="icon-wrapper"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h4 class="fw-bold mb-3">Trakset</h4>
+                        <p class="text-muted small mb-4">Asset Management & Preventive Maintenance. Smart asset tagging and centralized multi-location control.</p>
+                        <a href="product.html" class="btn-link-custom mt-auto">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Product 3: Inventory -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 0.2s;">
+                    <div class="solution-card d-flex flex-column">
+                        <div class="icon-wrapper"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <h4 class="fw-bold mb-3">Inventory <span class="badge bg-secondary ms-1" style="font-size:0.6rem;">Beta</span></h4>
+                        <p class="text-muted small mb-4">AI-powered Inventory Management. Track stock levels automatically and forecast demand seamlessly.</p>
+                        <a href="product.html" class="btn-link-custom mt-auto">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Product 4: Feedback -->
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: 0.3s;">
+                    <div class="solution-card d-flex flex-column">
+                        <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
+                        <h4 class="fw-bold mb-3">Feedback <span class="badge bg-secondary ms-1" style="font-size:0.6rem;">Beta</span></h4>
+                        <p class="text-muted small mb-4">Customer Feedback Management. Gather insights, analyze sentiment, and improve customer retention.</p>
+                        <a href="product.html" class="btn-link-custom mt-auto">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES / WHY CHOOSE US -->
+    <section id="features">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 reveal">
+                    <h2 class="display-5 fw-bold mb-4" style="color: var(--navy-blue);">Why Choose Startex IT?</h2>
+                    <p class="text-muted mb-4 pe-lg-4">We don't just write code; we solve real business problems. Our platforms are designed for scale, security, and extreme ease of use.</p>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="feature-pill shadow-sm"><i class="fa-solid fa-lock text-accent me-3"></i> Enterprise-Grade Security</div>
+                        <div class="feature-pill shadow-sm"><i class="fa-solid fa-cloud text-accent me-3"></i> 99.9% Cloud Uptime</div>
+                        <div class="feature-pill shadow-sm"><i class="fa-solid fa-mobile-screen text-accent me-3"></i> Cross-Platform Mobile Apps</div>
+                        <div class="feature-pill shadow-sm"><i class="fa-solid fa-headset text-accent me-3"></i> 24/7 Dedicated Support</div>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0 reveal" style="transition-delay: 0.2s;">
+                    <div class="row g-3">
+                        <div class="col-6"><img src="https://placehold.co/400x500/13ce85/ffffff?text=Mobile+App" class="img-fluid rounded-4 shadow" alt="Feature 1"></div>
+                        <div class="col-6 mt-5"><img src="https://placehold.co/400x500/de7c6f/ffffff?text=Analytics" class="img-fluid rounded-4 shadow" alt="Feature 2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS SECTION -->
+    <section id="clients" class="py-5 border-top border-bottom">
+        <div class="container text-center reveal">
+            <h6 class="text-muted fw-bold mb-4">TRUSTED BY INNOVATIVE BRANDS</h6>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+                <img src="https://placehold.co/150x50/cccccc/ffffff?text=Logo+1" alt="Client 1" class="client-logo">
+                <img src="https://placehold.co/150x50/cccccc/ffffff?text=Logo+2" alt="Client 2" class="client-logo">
+                <img src="https://placehold.co/150x50/cccccc/ffffff?text=Logo+3" alt="Client 3" class="client-logo">
+                <img src="https://placehold.co/150x50/cccccc/ffffff?text=Logo+4" alt="Client 4" class="client-logo">
+                <img src="https://placehold.co/150x50/cccccc/ffffff?text=Logo+5" alt="Client 5" class="client-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 reveal">
+                    <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold" style="color: var(--navy-blue);">Ready to Transform Your Business?</h2>
+                            <p class="text-muted">Contact us for a personalized demo or custom pricing.</p>
+                        </div>
+                        <form action="#">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Work Email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Company Name">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select form-control">
+                                        <option selected disabled>Interested Product...</option>
+                                        <option value="syncrowise">Syncrowise</option>
+                                        <option value="trakset">Trakset</option>
+                                        <option value="inventory">Inventory System</option>
+                                        <option value="feedback">Feedback Management</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn btn-theme btn-lg w-100">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-5" style="background-color: var(--navy-blue); color: rgba(255,255,255,0.7);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <a class="navbar-brand text-white fs-4 fw-bold mb-3 d-block" href="#home">
+                        <i class="fa-solid fa-layer-group text-accent"></i> Startex <span class="fw-light">IT</span>
+                    </a>
+                    <p class="small mb-3">Centralized platforms for smart asset tagging, preventive maintenance, and work order management.</p>
+                </div>
+                <div class="col-lg-4 text-lg-center">
+                    <h5 class="text-white mb-3 brand-font">Quick Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#about" class="text-decoration-none text-light hover-accent">About Us</a></li>
+                        <li><a href="#solutions" class="text-decoration-none text-light hover-accent">Products</a></li>
+                        <li><a href="#contact" class="text-decoration-none text-light hover-accent">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h5 class="text-white mb-3 brand-font">Connect</h5>
+                    <div class="d-flex justify-content-lg-end gap-3 fs-5">
+                        <a href="#" class="text-white"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 pt-4 border-top border-secondary small">
+                &copy; 2024 Startex IT. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Script for Animations & Nav -->
+    <script>
+        $(document).ready(function() {
+            // 1. Scroll Reveal Animation Logic (using jQuery)
+            function revealElements() {
+                var windowHeight = $(window).height();
+                var scrollTop = $(window).scrollTop();
+                
+                $('.reveal').each(function() {
+                    var elementTop = $(this).offset().top;
+                    // If element is in viewport
+                    if (elementTop < (scrollTop + windowHeight - 50)) {
+                        $(this).addClass('active');
+                    }
+                });
+            }
+            
+            // Trigger on load and scroll
+            revealElements();
+            $(window).scroll(function() {
+                revealElements();
+                
+                // 2. Navbar color change on scroll
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+
+            // 3. Smooth Scrolling for Nav Links
+            $('a.nav-link, .navbar-brand, .btn-outline-light, .btn-theme[href^="#"]').on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    var offset = $(hash).offset().top - 80; // offset for sticky nav
+                    
+                    $('html, body').animate({
+                        scrollTop: offset
+                    }, 800);
+
+                    // Close mobile menu on click
+                    if ($('.navbar-collapse').hasClass('show')) {
+                        $('.navbar-toggler').click();
+                    }
+                }
+            });
+            
+            // Initialize Navbar background if loaded not at top
+            if ($(window).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
