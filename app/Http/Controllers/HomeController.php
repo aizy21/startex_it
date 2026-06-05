@@ -73,8 +73,8 @@ class HomeController extends Controller
 
         try {
             // Send email notification
-            // Mail::to('sync@startexmarketing.com')->send(new ContactMail($request->all()));
-            Mail::to('pk.harissultani@gmail.com')->send(new ContactMail($request->all()));
+            Mail::to('sync@startexmarketing.com')->send(new ContactMail($request->all()));
+            // Mail::to('pk.harissultani@gmail.com')->send(new ContactMail($request->all()));
 
             // Return JSON success response on completion
             return response()->json([
