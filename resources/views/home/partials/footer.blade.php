@@ -1,17 +1,17 @@
-<footer class="footer-section py-5" style="background-color: var(--navy-blue, #0a192f); color: rgba(255, 255, 255, 0.7);">
+<footer class="footer-section py-5 text-center text-md-start" style="background-color: var(--navy-blue, #0a192f); color: rgba(255, 255, 255, 0.7);">
     <div class="container">
         <div class="row g-4">
 
             <!-- Column 1: Brand & Socials -->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 ">
                 <a class="navbar-brand text-white fs-4 fw-bold mb-3 d-inline-block text-decoration-none" href="#home">
                     <i class="fa-solid fa-layer-group text-accent"></i> Startex <span class="fw-light">IT</span>
                 </a>
                 <p class="small mb-4 lh-lg">We engineer custom software systems, responsive web applications, and unified operational platforms designed to automate business workflows, trace high-value assets, and scale digital infrastructure securely.</p>
                 <div class="d-flex gap-3 footer-socials">
-                    <a class="social-btn" target="_blank" href="https://www.linkedin.com/company/startex-marketing-services/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a class="social-btn" target="_blank" href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                    <a class="social-btn" target="_blank" href="https://www.facebook.com/profile.php?id=100021280965800" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a class="social-btn mx-auto m-md-0" target="_blank" href="https://www.linkedin.com/company/startex-marketing-services/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a class="social-btn mx-auto m-md-0" target="_blank" href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a class="social-btn mx-auto m-md-0" target="_blank" href="https://www.facebook.com/profile.php?id=100021280965800" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
 
@@ -29,19 +29,19 @@
             </div>
 
             <!-- Column 3: Contact Info -->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 ">
                 <h5 class="text-white mb-3 fw-semibold text-uppercase fs-6 tracking-wider">Get in Touch</h5>
                 <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
                     <li class="d-flex align-items-start gap-2">
-                        <i class="fa-solid fa-envelope mt-1 text-white opacity-75"></i>
-                        <div>
+                        <i class="fa-solid fa-envelope mt-1 text-white opacity-75 d-none d-md-block"></i>
+                        <div class=" mx-auto ms-md-0">
                             <span class="d-block text-white-50 small">Email Address</span>
                             <a class="footer-link text-decoration-none text-break" href="mailto:info@startexmarketing.com">info@startexmarketing.com</a>
                         </div>
                     </li>
                     <li class="d-flex align-items-start gap-2">
-                        <i class="fa-solid fa-phone mt-1 text-white opacity-75"></i>
-                        <div>
+                        <i class="fa-solid fa-phone mt-1 text-white opacity-75 d-none d-md-block"></i>
+                        <div class=" mx-auto ms-md-0">
                             <span class="d-block text-white-50 small">Phone Numbers</span>
                             <a class="footer-link text-decoration-none" href="tel:04235782381">042 35782381</a> /
                             <a class="footer-link text-decoration-none" href="tel:04235782382">82</a>
@@ -54,8 +54,8 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-3 fw-semibold text-uppercase fs-6 tracking-wider">Our Office</h5>
                 <div class="d-flex align-items-start gap-2">
-                    <i class="fa-solid fa-location-dot mt-1 text-white opacity-75"></i>
-                    <p class="small lh-lg mb-0">
+                    <i class="fa-solid fa-location-dot mt-1 text-white opacity-75 d-none d-md-block"></i>
+                    <p class="small lh-lg mb-0 mx-auto ms-md-0">
                         Office # 511-513, 5th Floor, Eden Towers,<br>
                         Main Boulevard, Gulberg III,<br>
                         Lahore, Punjab, Pakistan. 54660
